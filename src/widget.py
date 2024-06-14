@@ -2,7 +2,8 @@ import masks
 
 
 def mask_account_card(client_information: str) -> str:
-    """Функция, которая возвращает с замаскированным номером карты или счета"""
+    """Функция, которая принимает номера счёта или название и номер карты
+    и возвращает строку с названием и с замаскированным номером карты или счета"""
 
     if "Счет" in client_information:
         return client_information[:-20] + masks.get_mask_account(client_information)
@@ -19,7 +20,8 @@ if __name__ == "__main__":
 
 
 def get_data(date: str) -> str:
-    """Функция для преобразования даты"""
+    """Функция которая принимает строку с данными даты/времени
+    и возвращает строку с преобразованием даты"""
     new_date = f"{date[8:10]}.{date[5:7]}.{date[:4]}"
     return new_date
 

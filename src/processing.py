@@ -1,8 +1,9 @@
 from typing import Any
 
 
-def filter_by_state(info_users: list[dict], state: str = "EXECUTED") -> list[dict]:
-    """ Функция, которая возвращает список словарей, по параметру 'state' """
+def filter_by_state(info_users: list[dict[str, Any]], state: str = "EXECUTED") -> list[dict[str, Any]]:
+    """ Функция,  которая принимает на вход список словарей и
+    возвращает новый список словарей, по заданному параметру 'state' """
     sort_info_users = []
     for info in info_users:
         if info["state"] == state:
@@ -11,13 +12,13 @@ def filter_by_state(info_users: list[dict], state: str = "EXECUTED") -> list[dic
     return sort_info_users
 
 
-def sort_by_date(info_dicts: list[dict], sorting_parameter: Any = None) -> list[dict]:
-    """Функция,которая сортирует список словарей по параметру 'date',
-    если второй аргумент True, то от самой новой даты до старой, если False - наоборот """
+def sort_by_date(info_dicts: list[dict], sorting_parameter: Any = True) -> list[dict]:
+    """Функция, которая принимает на вход список словарей и возвращает
+    сортированный список словарей по параметру 'date', по умолчанию по убыванию дат"""
     if sorting_parameter is not None:
-        return sorted(info_dicts, key=lambda date: date["date"])
-    else:
         return sorted(info_dicts, key=lambda date: date["date"], reverse=True)
+    else:
+        return sorted(info_dicts, key=lambda date: date["date"])
 
 
 # print(filter_by_state([{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
