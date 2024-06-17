@@ -3,9 +3,9 @@ import pytest
 from src.utils import up_first, text_reverse
 
 
-def test_text_reverse_(numbers, letters):
-    assert text_reverse('og123') == numbers
-    assert text_reverse('boj doog') == letters
+def test_text_reverse_():
+    assert text_reverse('og123') == '321go'
+    assert text_reverse('boj doog') == 'good job'
 
 
 @pytest.mark.parametrize('value, expected', [
