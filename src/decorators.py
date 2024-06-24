@@ -2,7 +2,7 @@ from functools import wraps
 from typing import Callable, Any
 
 
-def log(filename: Any) -> Callable:
+def log(filename: Any = None) -> Callable:
     """ Декоратор для логгирования вызовов функций и их результатов.
     :param filename: Путь к файлу для записи логов. Если не указан, логи выводятся в консоль.
     :return: Функция или None в случае ошибки. """
@@ -12,14 +12,18 @@ def log(filename: Any) -> Callable:
             try:
                 result = func(*args, **kwargs)
                 log_message = f"{func.__name__} ok. Result: {result}"
-                with open(filename, "a") as f:
-                    f.write(log_message + "\n")
-                print(log_message)
+                if filename:
+                    with open(filename, "a") as f:
+                        f.write(log_message + "\n")
+                else:
+                    print(log_message)
             except Exception as e:
-                error_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
-                with open(filename, "a") as f:
-                    f.write(error_message + "\n")
-                print(error_message)
+                error_message = f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}"
+                if filename:
+                    with open(filename, "a") as f:
+                        f.write(error_message + "\n")
+                else:
+                    print(error_message)
         return inner
 
     return wrapper
