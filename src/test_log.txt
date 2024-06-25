@@ -1,0 +1,16 @@
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 't'), {}
+my_function ok. Result: 8
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 't'), {}
