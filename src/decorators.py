@@ -29,7 +29,7 @@ def log(filename: Any = None) -> Callable:
     return wrapper
 
 
-@log(filename="test_log.txt")
+@log()
 def my_function(a: int, b: int) -> int:
     return a + b
 
