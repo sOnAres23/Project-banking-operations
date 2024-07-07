@@ -8,7 +8,7 @@ def test_log():
         return a + b
 
     my_function(5, 3)
-    assert "my_function ok. Result: 8"
+    assert 'my_function ok. Result: 8'
 
 
 def test_log_without_filename(capsys):
