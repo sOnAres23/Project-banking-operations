@@ -13,6 +13,3 @@ def read_transactions_from_json(json_file_path: str) -> List[Dict[str, Any]]:
                 return []
     except FileNotFoundError:
         return []
-
-
-read_transactions_from_json('../data/operations.json')
