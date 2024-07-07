@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv('../.env')
 
+API_KEY = os.getenv('API_KEY')
+
 
 def convert_amount_to_rubles(transaction: Dict[str, Any]) -> float:
     """Функция, которая принимает на вход транзакцию и возвращает сумму транзакции
@@ -17,10 +19,9 @@ def convert_amount_to_rubles(transaction: Dict[str, Any]) -> float:
     if currency == 'RUB':
         return amount
     elif currency in ['USD', 'EUR']:
-        api_key = os.getenv('API_KEY')
         response = requests.get(
             'https://api.apilayer.com/exchangerates_data/convert',
-            headers={'apikey': api_key},
+            headers={'apikey': API_KEY},
             params={'from': currency, 'to': 'RUB', 'amount': amount}
         )
 
@@ -31,7 +32,7 @@ def convert_amount_to_rubles(transaction: Dict[str, Any]) -> float:
             else:
                 raise ValueError(f'Exchange rate for {currency} not found in API response')
 
-    return amount
+    return round(amount, 2)
 
 
 transaction = {
@@ -39,7 +40,7 @@ transaction = {
     "state": "EXECUTED",
     "date": "2019-07-03T18:35:29.512364",
     "operationAmount": {
-      "amount": "8221.37",
+      "amount": "8228.59",
       "currency": {
         "name": "USD",
         "code": "USD"

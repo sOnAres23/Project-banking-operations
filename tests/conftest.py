@@ -37,3 +37,18 @@ def list_sort_date():
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
+
+
+@pytest.fixture
+def info_trans():
+    return {
+        "id": 441945886,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {
+          "amount": "8228.59",
+          "currency": {
+            "code": "RUB"
+          }
+        }
+      }

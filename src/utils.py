@@ -8,7 +8,7 @@ def read_transactions_from_json(json_file_path: str) -> List[Dict[str, Any]]:
         with open(json_file_path, encoding='utf-8') as file:
             data = json.load(file)
             if isinstance(data, list):
-                print(data)
+                return data
             else:
                 return []
     except FileNotFoundError:
