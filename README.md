@@ -19,7 +19,7 @@
 ## Установка:
 1. клонируйте репозиторий через ssh 
 ```
-git@github.com:sOnAres23/project10.git
+git@github.com:sOnAres23/Project-banking-operations.git
 ```
 2. устанавливайте зависимости из: 
 ```

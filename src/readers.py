@@ -20,9 +20,9 @@ def read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]:
     try:
         logger.info("Открываем файл...")
         with open(file_path, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
+            reader = pd.read_csv(file, delimiter=";")
             logger.info("Файл корректный, возвращаем его содержимое")
-            for row in reader:
+            for index, row in reader.iterrows():
                 transactions.append(dict(row))
 
         return transactions
