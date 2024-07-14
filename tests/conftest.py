@@ -46,9 +46,23 @@ def info_trans():
         "state": "EXECUTED",
         "date": "2019-08-26T10:50:58.294041",
         "operationAmount": {
-          "amount": "8228.59",
-          "currency": {
-            "code": "RUB"
-          }
+            "amount": "8228.59",
+            "currency": {
+                "code": "RUB"
+            }
         }
-      }
+    }
+
+
+@pytest.fixture
+def test_info_csv():
+    return {'id': 650703.0,
+            'state': 'EXECUTED',
+            'date': '2023-09-05T11:30:32Z',
+            'amount': 16210.0,
+            'currency_name': 'Sol',
+            'currency_code': 'PEN',
+            'from': 'Счет 58803664561298323391',
+            'to': 'Счет 39745660563456619397',
+            'description': 'Перевод организации'
+            }
