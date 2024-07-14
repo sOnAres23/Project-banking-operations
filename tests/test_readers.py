@@ -6,16 +6,20 @@ import pandas as pd
 @patch("tests.test_readers.pd.read_csv")
 def test_read_transactions_from_csv(test_info_csv):
     Mock.return_value = pd.DataFrame()
-    assert read_transactions_from_csv('foo') == []
-
-    info_csv = read_transactions_from_csv("../data/transactions.csv")
-    assert info_csv[0] == test_info_csv
+    assert read_transactions_from_csv(test_info_csv) == []
 
 
 @patch("tests.test_readers.pd.read_excel")
-def test_read_transactions_from_xlsx(test_info_xlcx):
-    Mock.return_value = pd.DataFrame()
-    assert read_transactions_from_xlsx('foo') == []
+def test_read_transactions_from_xlsx(mock_read_excel):
+    mock_df = pd.DataFrame(
+        {'id': [650703, 593027], 'state': ['EXECUTED', 'CANCELED']}
+    )
+    mock_read_excel.return_value = mock_df
 
-    info_xlsx = read_transactions_from_xlsx("../data/transactions_excel.xlsx")
-    assert info_xlsx[0] == test_info_xlcx
+    result = read_transactions_from_xlsx('../data/transactions_excel.xlsx')
+
+    assert result == [
+        {'id': 650703, 'state': 'EXECUTED'},
+        {'id': 593027, 'state': 'CANCELED'}
+    ]
+    mock_read_excel.assert_called_once_with('../data/transactions_excel.xlsx')
