@@ -1,13 +1,13 @@
 import logging
 from typing import Any, Dict, List
-
+#
 import pandas as pd
-
-"""Создаем логгер для логирования функций и записываем логи в директорию logs"""
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
-                    filename='../logs/readers.log',  # Запись логов в файл
-                    filemode='w')  # Перезапись файла при каждом запуске
+#
+# """Создаем логгер для логирования функций и записываем логи в директорию logs"""
+# logging.basicConfig(level=logging.DEBUG,
+#                     format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
+#                     filename='../logs/readers.log',  # Запись логов в файл
+#                     filemode='w')  # Перезапись файла при каждом запуске
 logger = logging.getLogger("readers.py")
 
 
@@ -36,7 +36,7 @@ def read_transactions_from_xlsx(file_path: str) -> List[Dict[str, Any]]:
     transactions = []
     try:
         logger.info("Открываем файл...")
-        excel_transactions = pd.read_excel(file_path).head()
+        excel_transactions = pd.read_excel(file_path)
         logger.info("Файл корректный, возвращаем его содержимое")
         for index, row in excel_transactions.iterrows():
             transactions.append(dict(row))
@@ -48,10 +48,10 @@ def read_transactions_from_xlsx(file_path: str) -> List[Dict[str, Any]]:
         return []
 
 
-print(read_transactions_from_csv("../data/transactions.csv"))
-print(read_transactions_from_xlsx("../data/transactions_excel.xlsx"))
+# print(read_transactions_from_csv("../data/transactions.csv"))
+# read_transactions_from_xlsx("../data/transactions_excel.xlsx")
 
 # В других частях  проекта, где нужно считать данные из CSV
-# или XLSX файлов, импортировать эти функции следующим образом:
+# или XLSX файлов, нужно импортировать эти функции следующим образом:
 #
 # from readers import read_transactions_from_csv, read_transactions_from_xlsx

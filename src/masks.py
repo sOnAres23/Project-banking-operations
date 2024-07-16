@@ -1,10 +1,11 @@
 import logging
+from src.decorators import log
 
-"""Создаем логгер для логирования функций и записываем логи в директорию logs"""
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
-                    filename='../logs/masks.log', # Запись логов в файл
-                    filemode='w') # Перезапись файла при каждом запуске
+# """Создаем логгер для логирования функций и записываем логи в директорию logs"""
+# logging.basicConfig(level=logging.DEBUG,
+#                     format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
+#                     filename='../logs/masks.log', # Запись логов в файл
+#                     filemode='w') # Перезапись файла при каждом запуске
 logger = logging.getLogger("masks.py")
 
 
@@ -26,7 +27,7 @@ def get_mask_account(bank_account: str) -> str | None:
     return f"**{bank_account[-4:]}"
 
 
-if __name__ == "__main__":
-    print(get_mask_card_number("7000792289606368"))
-if __name__ == "__main__":
-    print(get_mask_account("73654108430135874305"))
+# if __name__ == "__main__":
+#     print(get_mask_card_number("7000792289606368"))
+# if __name__ == "__main__":
+#     print(get_mask_account("73654108430135874305"))

@@ -85,14 +85,14 @@ def filter_by_currency(info: List[Dict[str, dict]], value: str) -> Generator[str
     """Функция, которая принимает список словарей с банковскими операциями
     и возвращает итератор, который выдает по очереди операции, по заданной валюте"""
     for key in info:
-        if key["operationAmount"]["currency"]["code"] == value:
-            yield key["id"]
+        if key["operationAmount"]["currency"].get("code") == value:
+            yield key
 
 
-usd_transactions = filter_by_currency(transactions, "USD")
-
-for _ in range(3):
-    print(next(usd_transactions))
+# usd_transactions = filter_by_currency(transactions, "USD")
+#
+# for _ in range(3):
+#     print(next(usd_transactions))
 
 
 # print(len(transactions))
@@ -103,10 +103,10 @@ def transaction_descriptions(info: List[Dict[str, dict]]) -> Generator[str, None
         yield key["description"]
 
 
-descriptions = transaction_descriptions(transactions)
-
-for _ in range(5):
-    print(next(descriptions))
+# descriptions = transaction_descriptions(transactions)
+#
+# for _ in range(5):
+#     print(next(descriptions))
 
 
 def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
@@ -120,5 +120,5 @@ def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
         yield formatted_card_number
 
 
-for card_num in card_number_generator(1, 9):
-    print(card_num)
+# for card_num in card_number_generator(1, 9):
+#     print(card_num)

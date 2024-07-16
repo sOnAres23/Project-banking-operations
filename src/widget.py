@@ -14,9 +14,9 @@ def mask_account_card(client_information: str) -> str:
         return new_card
 
 
-if __name__ == "__main__":
-    print(mask_account_card("Счет 73654108430135872304"))
-    print(mask_account_card("Visa Gold 5999414228426358"))
+# if __name__ == "__main__":
+#     print(mask_account_card("Счет 73654108430135872304"))
+#     print(mask_account_card("Visa Gold 5999414228426358"))
 
 
 def get_data(date: str) -> str:
@@ -26,5 +26,5 @@ def get_data(date: str) -> str:
     return new_date
 
 
-if __name__ == "__main__":
-    print(get_data("2018-07-11T02:26:18.671407"))
+# if __name__ == "__main__":
+#     print(get_data("2018-07-11T02:26:18.671407"))
