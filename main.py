@@ -6,7 +6,7 @@ from src.utils import read_transactions_from_json
 from src.widget import get_data, mask_account_card
 
 
-def main():
+def main() -> str:
     greeting_to_user = '''Привет! Добро пожаловать в программу работы с банковскими транзакциями. 
 \nВыберите необходимый пункт меню:
 1. Получить информацию о транзакциях из JSON-файла
@@ -20,7 +20,7 @@ def main():
 
     if input_user == "1":
         print("\nДля обработки выбран JSON-файл.")
-        result = read_transactions_from_json("data/operations.json")  # Функция чтения json формата
+        result = read_transactions_from_json("data/transactions.json")  # Функция чтения json формата
     elif input_user == "2":
         print("\nДля обработки выбран CSV-файл.")
         result = read_transactions_from_csv("data/transactions.csv")  # Функция чтения csv формата
@@ -85,14 +85,8 @@ def main():
     else:
         if input_user_word == "да":
             word_filter = input("\nВведите слово для поиска:\n")
-
-            if input_user_rub == "да":
-                list_result = [r for r in [*result]]
-                result = find_transactions([*result], word_filter)  # функция фильтрует операции
-                # по слову word_filter в описании операции
-            else:
-                result = find_transactions(result, word_filter)  # функция фильтрует операции
-                # по слову word_filter в описании операции
+            result = find_transactions(result, word_filter)  # Функция фильтрует операции
+            # по слову word_filter в описании операции
 
     print("Распечатываю итоговый список транзакций...\n")
     print(f"Всего банковских операций в выборке: {len(result)}\n")
@@ -100,15 +94,13 @@ def main():
     if result is []:
         return "Не найдено ни одной транзакции, подходящей под ваши условия фильтрации"
     else:
-        for i in result:
-            data = get_data(i["date"])
-            description = i["description"]
-            from_ = mask_account_card(i.get("from", ""))
-            to_ = mask_account_card(i.get("to", ""))
-            amount = i["operationAmount"]["amount"]
-            name = i["operationAmount"]["currency"]["name"]
-
-            print(f"{data} {description}\n{from_} -> {to_}\nСумма: {amount} {name}\n")
+        for trans in result:
+            if trans["description"] in "Открытие вклада" in trans["description"]:
+                print(f"{get_data(trans["date"])} Открытие вклада\n{mask_account_card(trans["to"])}"
+                      f"\nСумма: {trans["amount"]} {trans["currency_name"]}\n")
+            else:
+                print(f"{get_data(trans["date"])} {trans["description"]}\n{mask_account_card(trans["from"])} -> "
+                      f"{mask_account_card(trans["to"])}\nСумма: {trans["amount"]} {trans["currency_name"]}\n")
     return 'finish'
 
 

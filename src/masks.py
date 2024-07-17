@@ -1,5 +1,5 @@
 import logging
-from src.decorators import log
+
 
 # """Создаем логгер для логирования функций и записываем логи в директорию logs"""
 # logging.basicConfig(level=logging.DEBUG,
