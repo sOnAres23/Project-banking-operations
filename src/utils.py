@@ -2,11 +2,11 @@ import json
 import logging
 from typing import Any, Dict, List
 
-"""Создаем логгер для логирования функций и записываем логи в директорию logs"""
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
-                    filename='../logs/utils.log', # Запись логов в файл
-                    filemode='w') # Перезапись файла при каждом запуске
+# """Создаем логгер для логирования функций и записываем логи в директорию logs"""
+# logging.basicConfig(level=logging.DEBUG,
+#                     format='%(asctime)s: %(name)s %(funcName)s - %(levelname)s - %(message)s',
+#                     filename='../logs/utils.log', # Запись логов в файл
+#                     filemode='w') # Перезапись файла при каждом запуске
 logger = logging.getLogger("utils.py")
 
 
@@ -28,4 +28,8 @@ def read_transactions_from_json(json_file_path: str) -> List[Dict[str, Any]]:
         return []
 
 
-read_transactions_from_json("../data/operations.json")
+# read_transactions_from_json("../data/operations.json")
+
+# В других частях  проекта, где нужно считать данные из JSON
+# файла, нужно импортировать эту функцию следующим образом:
+# from src.utils import read_transactions_from_json

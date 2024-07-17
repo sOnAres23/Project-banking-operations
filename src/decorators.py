@@ -29,10 +29,10 @@ def log(filename: Any = None) -> Callable:
     return wrapper
 
 
-@log()
-def my_function(a: int, b: int) -> int:
-    return a + b
-
-
-my_function(1, 7)
-my_function(1, "t")
+# @log(filename='work.txt')
+# def my_function(a: int, b: int) -> int:
+#     return a + b
+#
+#
+# my_function(1, 7)
+# my_function(1, "t")
